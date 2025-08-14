@@ -7,8 +7,9 @@ import EditClientModal from '../components/EditClientModal';
 import ViewClientModal from '../components/ViewClientModal';
 import ProviderList from '../components/ProviderList';
 import ClientCard from '../components/ClientCard';
-
+import { useNavigate } from 'react-router-dom';
 import { fetchClientes, createCliente, updateCliente, deleteCliente } from '../service/ecApi';
+import CardOpcionesTecnico from '../components/CardOpcionesTecnico';
 
 export default function Home() {
   const [clients, setClients] = useState([]);
@@ -16,7 +17,8 @@ export default function Home() {
   const [modalType, setModalType] = useState(null); // 'add' | 'view' | 'edit'
   const [loading, setLoading] = useState(false);
   const [initialLoading, setInitialLoading] = useState(true);
-
+  
+const navigate = useNavigate();
   const loadClients = async () => {
     setInitialLoading(true);
     try {
@@ -94,6 +96,36 @@ export default function Home() {
 
   return (
     <Container sx={{ mt: 2, position: 'relative' }}>
+    <CardOpcionesTecnico
+  onAction={(accion) => {
+    switch (accion) {
+      case 'abrir':
+        console.log("Abrir celular");
+        // abrir modal o nueva página
+        break;
+      case 'diagnostico':
+        console.log("Diagnóstico");
+        break;
+        case 'Proveedores':
+        navigate('/proveedores');
+        break;
+      case 'soldar':
+        console.log("Soldar componente");
+        break;
+      case 'cambiarModulo':
+        console.log("Cambiar módulo");
+        break;
+      case 'software':
+        console.log("Instalar software");
+        break;
+      case 'caja':
+        console.log("Preparar caja / embalaje");
+        break;
+      default:
+        break;
+    }
+  }}
+/>
       <Button 
         variant="contained" 
         color="primary" 
