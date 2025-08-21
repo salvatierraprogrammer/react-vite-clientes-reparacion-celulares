@@ -8,9 +8,10 @@ const Footer = () => {
       sx={{ 
         py: 2, 
         mt: 4, 
-        bgcolor: 'primary.main', 
+        bgcolor: 'grey.900',  // color oscuro de fondo
         color: 'white', 
-        textAlign: 'center' 
+        textAlign: 'center',
+        position: 'relative'  // mantiene el footer en su lugar
       }}
     >
       <Container maxWidth="lg">
